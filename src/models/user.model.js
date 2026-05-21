@@ -28,10 +28,10 @@ const userSchema = new mongoose.Schema({
 
     userSchema.pre('save',async function(next){ //jab hum user ko save karenge to ye function call hoga, isme hum password ko hash karenge aur ye pehele chalega save hone se pehele
     if (!this.isModified('password')){ //agar password modify nahi hua hai to next kar do, warna password ko hash kar do
-        return next();}
+        return }
     const hash = await bcrypt.hash(this.password,10); //10 is the salt rounds, it is use to make the hash more secure
     this.password = hash; //password ko hash kar do
-    return next(); //next kar do
+    return  //next kar do
     
     })
 
